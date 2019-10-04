@@ -1,0 +1,213 @@
+<form class="form-horizontal" ng-controller = "PropertyDetailsController" role="form" name="fieldPropertyListForm" novalidate>
+	<div class="form-group">
+		<div class="col-md-12">
+			<fieldset class="fieldset">
+				<legend>Property List</legend>
+				
+					<table class="table table-striped">
+				 		<thead>
+				 			<tr>
+				 				<th>Address1</th>
+				 				<th>Location</th>
+				 				<th>City</th>
+				 				<th>State</th>
+				 				<th>PinCode</th>
+				 				<th>&nbsp;</th>
+				 				<th>&nbsp;</th>
+				 			</tr>
+				 			
+				 		</thead>
+				 		<tbody>
+				 			<tr ng-repeat="propertyDetail in propertyDetails">
+				 				<td>{{propertyDetail.address1}}</td>
+				 				<td>{{propertyDetail.location}}</td>
+				 				<td>{{propertyDetail.city}}</td>
+				 				<td>{{propertyDetail.state}}</td>
+				 				<td>{{propertyDetail.pinCode}}</td>
+				 				<td>
+				 					<button ng-click="showPropertyDetail(propertyDetail)" class="btn btn-primary">
+				 						<span class="glyphicon glyphicon-list" />
+				 					</button>
+				 				</td>
+				 				<td>
+				 					<button ng-click="deletePropertyDetail(propertyDetail._id)" class="btn btn-danger">
+				 						<span class="glyphicon glyphicon-remove" />
+				 					</button>
+				 				</td>
+				 			</tr>
+				 		</tbody>
+				 	</table>
+				
+				
+			</fieldset>
+		</div>
+		<div class="col-md-12" ng-show="showDetail">
+			<br>
+			<h4>Property Details for {{propertyDetail.address1}} {{propertyDetail.location}} {{propertyDetail.city}} {{propertyDetail.state}}</h4>
+			<hr/>
+			<h5>{{propertyDetail.propertyDescription}}</h5>
+			<hr/>
+			<br>
+		</div>
+		
+		<div class="col-md-12" ng-show="showDetail">
+			<div ng-init="accordion=1">
+				<h3 class="accordion" >
+					<a href ng-click="">Summary of the Property</a>
+				</h3>
+					<div class="accordion-content">
+						<div class="form-group">
+							<div class="col-md-3">
+								<ul>
+									<li>
+									Price: {{propertyDetail.price}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Furnished: {{propertyDetail.furnished}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Air Conditioner: {{propertyDetail.airConditionerAvailable}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Square Feet: {{propertyDetail.squareFeet}}
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-3">
+								<ul>
+									<li>
+									Property Type: {{propertyDetail.propertyType}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Association Fee: {{propertyDetail.associationFee}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Parking Space: {{propertyDetail.parkingSpace}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Property Age: {{propertyDetail.age}}
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				<h3 class="accordion">
+					<a href ng-click="">Interior Features</a>
+				</h3>
+				<div class="accordion-content">
+						<div class="form-group">
+							<div class="col-md-12">
+								<ul>
+									<li>
+									Attached Bathroom #: {{propertyDetail.attachedBathroomNum}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Outside Bathroom #: {{propertyDetail.outsideBathroomNum}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Bedroom #: {{propertyDetail.bedroomCount}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Flooring: {{propertyDetail.floorType}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Other Interior Details:  {{propertyDetail.otherInteriorDetail}}
+									</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				<h3 class="accordion">
+						<a href ng-click="">Exterior Features</a>
+				</h3>
+					<div class="accordion-content">
+						<div class="form-group">
+							<div class="col-md-12">
+								<ul>
+									<li>
+									Water/Sewer: {{propertyDetail.waterSewerDetail}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Builder Details: {{propertyDetail.builderDetail}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Model or Design Details: {{propertyDetail.modelDesignDetail}}
+									</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				<h3 class="accordion" >
+					<a href ng-click="">Amenities</a>
+				</h3>
+					<div class="accordion-content">
+						<div class="form-group">
+							<div class="col-md-12">
+								<ul>
+									<li>
+									Amenities: {{propertyDetail.amenities}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Indoor Game Details: {{propertyDetail.indoorGameDetail}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Outdoor Game Details: {{propertyDetail.outdoorGameDetail}}
+									</li>
+								</ul>
+								<ul>
+									<li>
+									Other Amenities Details: {{propertyDetail.otherAmenitiesDetail}}
+									</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				<h3 class="accordion">
+					<a href ng-click="">Location Details</a>
+				</h3>
+					<div class="accordion-content">
+						<div class="form-group">
+							<div class="col-md-12">
+								<ul>
+									<li>
+									Other Location Details: {{propertyDetail.otherLocationDetail}}
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>	
+	</div>
+</form>

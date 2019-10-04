@@ -1,0 +1,103 @@
+<div class="form-group">
+	<form class="form-horizontal" ng-controller = "WorkOrderController"  role="form" name="workOrderForm" novalidate>
+	<div class="col-md-12">
+		<center><h3>Work Order</h3></center>
+		<br>
+	</div>
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<label class="checkbox-inline col-md-offset-8 form-control-label">
+				<input type="checkbox" ng-model="workOrder.fillForm"  value=""><b>Fill Work Order Form</b>
+			</label>
+		</div>
+		
+		<div class="col-md-6">
+		<h4>or Call +91 9999999999</h4>
+		</div>
+		<br>
+		<hr>
+	</div>
+		<div class="col-md-12" ng-show="workOrder.fillForm" >
+			<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+				 <div class="form-group">
+				    <label for="inputFirstName" class="col-md-3 form-control-label">First Name</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.firstName" id="inputFirstName" placeholder="First Name">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputLastName" class="col-md-3 form-control-label">Last Name</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.lastName" id="inputLastName" placeholder="Last Name">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputEmailId" class="col-md-3 form-control-label">Email Id</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.emailId" id="inputEmailId" placeholder="Email Id">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPhoneNumber" class="col-md-3 form-control-label">Phone Number</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.phoneNumber" id="inputPhoneNumber" placeholder="Phone Number">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputAddress1" class="col-md-3 form-control-label">Address1</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.address1" id="inputAddress1" placeholder="Address1">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputLocation" class="col-md-3 form-control-label">Location</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.location" id="inputLocation" placeholder="Location">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputCity" class="col-md-3 form-control-label">City</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.city" id="inputCity" placeholder="City">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputState" class="col-md-3 form-control-label">State</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.state" id="inputState" placeholder="State">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPinCode" class="col-md-3 form-control-label">PinCode</label>
+				    <div class="col-md-9">
+				      <input type="text" class="form-control" ng-model="workOrder.pinCode" id="inputPinCode" placeholder="PinCode">
+				    </div>
+				  </div>
+				  </div>
+				  <div class="col-md-3">
+				</div>		
+		</div>
+		<div class="col-md-12" ng-show="workOrder.fillForm" >
+				<br>
+			    <div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+					<div class="col-md-offset-3 col-md-4">
+						<button type="submit" ng-click="saveWorkOrder()" class="btn btn-primary btn-lg btn-block">Save</button>
+					</div>
+					<div class="col-md-4">
+						<button type="submit" class="btn btn-primary btn-lg btn-block">Cancel</button>
+					</div>
+				</div>
+				<div class="col-md-3">
+				</div>
+		</div>
+		<div class="col-md-12">
+				<br>
+			    <br>
+			    <br>
+		 </div>
+	</form>
+</div>

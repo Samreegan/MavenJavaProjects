@@ -1,0 +1,103 @@
+
+ <!-- <div class="col-md-12" >
+		<div class="col-md-6">
+			<div class="input-group custom-search-form">
+	         <input type="text" class="form-control input-lg" placeholder="City,Address,School,Agent,Zip">
+	         <span class="input-group-btn">
+	         <button class="btn btn-default input-lg"  type="button">
+	             <i class="fa fa-search" style="font-size:32px"></i>
+	         </button>
+	     	</span>
+	     </div>
+		</div>
+		<div class="col-md-6">
+			<div ng-controller="CorouselController" ng-app="ui.bootstrap.demo">
+			  <div style="height: 305px">
+			    <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+			      <uib-slide ng-repeat="slide in slides" active="slide.active">
+			        <img ng-src="{{slide.image}}" style="margin:auto;">
+			        <div class="carousel-caption">
+			          <h4>Slide {{$index}}</h4>
+			          <p>{{slide.text}}</p>
+			        </div>
+			      </uib-slide>
+			    </uib-carousel>
+			  </div>
+		</div>
+	</div>
+    </div> -->
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" ng-controller="HomePageController" ng-style="{'background-image': 'url(images/home28.jpg)'}">
+	    <!-- <div class="btn-group btn-group-justified" role="group" aria-label="...">
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-success btn-lg">Sell My Home</button>
+		  </div>
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-success btn-lg">Rent A Home</button>
+		  </div>
+		</div> -->
+		<div class="btn-group">
+		  <button type="button" class="btn btn-success btn-lg" ng-click='goNext("/workOrder")'>Sell My Home</button>
+		  <button type="button" class="btn btn-success btn-lg" ng-click='goNext("/workOrder")'>Rent A Home</button>
+		</div>
+     <div class="input-group custom-search-form col-md-5">
+	         <input type="text" class="form-control input-lg" placeholder="City,Address,School,Agent,Zip">
+	         <span class="input-group-btn">
+	         <button class="btn btn-default input-lg"  type="button">
+	             <i class="fa fa-search" style="font-size:32px"></i>
+	         </button>
+	     	</span>
+	     </div>
+      <div ng-style="{'color':'white'}" class="container">
+     
+        <br>
+        <br>
+      	
+        <h1>RealEstateProj!</h1>
+        <p >We're full-service, local agents who get to know you over coffee and on home tours, and we use online tools to make you smarter and faster. More than 10,000 customers buy or sell a home with us each year.</p>
+        <p><a class="btn btn-success btn-lg" href="#" role="button">See Our Story &raquo;</a></p>
+        <br>
+        <br>
+       
+        
+      </div>
+    </div>
+   
+	<div class="col-md-12">
+		<div class="col-md-4">
+			<img src="images/home4.gif" alt="..." class="thumbnail" width="354" height="286" >
+		</div>
+		<div class="col-md-4">
+		<img src="images/home6.jpg" alt="..." class="thumbnail" width="354" height="286" >
+		</div>
+		<div class="col-md-4">
+		<img src="images/home3.jpg" alt="..." class="thumbnail" width="354" height="286" >
+		</div>
+	</div>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Millions of Listing</h2>
+          <p>Homes for sale? You bet. We also have for sale by owner (FSBO) and Coming Soon listings, foreclosures, rentals - plus listings you won't find anywhere else. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>You're in the driver seat</h2>
+          <p>Register to save your search and favorite homes. We'll notify you when new listings hit the market, and send timely reports with the latest home values and trends. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>RealEstimate</h2>
+          <p>How much is your home worth? Use the Zestimate as a starting point in determining your current and future home value. Update your home facts to influence your Zestimate instantly.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+<!-- 
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer> -->
+    </div> <!-- /container -->

@@ -1,0 +1,444 @@
+<div class="container">
+	<div class="row">
+		<h3>List you property for</h3>
+		<hr/>
+		<div ng-init="tab=1">
+			<ul class="nav nav-tabs">
+				<li class="tab" ng-class="{active:tab==1}">
+					<a href ng-click="tab = 1">Sell</a>
+				</li>
+			    <li class="tab" ng-class="{active:tab==2}">
+					<a href ng-click="tab = 2">Rent</a>
+				</li>
+			</ul>
+			<div class="tab-content tab-pane" ng-show="tab==1">
+			<form class="form-horizontal" ng-controller = "PropertyDetailsController" role="form" name="accpropertySellForm" novalidate>
+				<div ng-init="accordion=1">
+					<!--  PROPERTY ADDRESS -->
+					<h3 class="accordion" ng-class="{active:accordion==1}">
+						<a href ng-click="accordion = 1">Property Address</a>
+					</h3>
+					<div class="accordion-content" ng-show="accordion==1">
+						  <div class="form-group">
+						    <label for="inputAddress1" class="col-sm-1 form-control-label">Address1</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" ng-model="propertydetail.address1" id="inputAddress1" placeholder="Address1">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputLocation" class="col-sm-1 form-control-label">Location</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" ng-model="propertydetail.location" id="inputLocation" placeholder="Location">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputCity" class="col-sm-1 form-control-label">City</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" ng-model="propertydetail.city" id="inputCity" placeholder="City">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputState" class="col-sm-1 form-control-label">State</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" ng-model="propertydetail.state" id="inputState" placeholder="State">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPinCode" class="col-sm-1 form-control-label">PinCode</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" ng-model="propertydetail.pinCode" id="inputPinCode" placeholder="PinCode">
+						    </div>
+						  </div>
+						    
+						    <!-- <div class="col-sm-1">
+						      <input type="text" class="form-control" ng-model="propertydetail.latitude" id="inputLatitude" placeholder="Lat">
+						    </div>
+						    <label for="inputLongitude" class="col-sm-1 form-control-label">Longitude</label>
+						    <div class="col-sm-1">
+						      <input type="text" class="form-control" ng-model="propertydetail.longitude" id="inputLongitude" placeholder="Long">
+						    </div> -->
+						    <div class="input-group col-sm-3 col-sm-offset-1">
+						    	<span class="input-group-addon"><b>Latitude</b></span>
+							  	<input type="text" class="form-control" ng-model="propertydetail.latitude" id="inputLatitude" placeholder="Lat">
+							  	<span class="input-group-addon"><b>Longitude</b></span>
+							  <input type="text" class="form-control" ng-model="propertydetail.longitude" id="inputLongitude" placeholder="Long">
+							</div>
+					</div>
+					
+					<!--  UPLOAD PHOTOS -->
+					<h3 class="accordion" ng-class="{active:accordion==2}">
+						<a href ng-click="accordion = 2">Upload Photos</a>
+					</h3>
+					<div class="accordion-content" ng-controller = "FileUploadController" ng-show="accordion==2">
+						
+							<div class="col-md-7" >
+								<fieldset class="fieldset">
+									<legend>Browse Photos</legend>
+									 	<div>
+									    	<input type="file" ng-model="files" name="files" class="col-md-6" base-sixty-four-input multiple accept="image/*, .zip" minsize="500" required minnum="2">
+		    								<button class="btn btn-success btn-md col-md-3"   ng-click="uploadFiles()">Add Photos</button>
+		    								
+		    								<label class="col-md-3 control-label">{{filess.length}} Out of 30 files</label>
+										</div>
+								</fieldset>
+							</div>
+							
+							<!-- <div class="panel panel-primary col-md-7">
+					            <div class="panel-heading">
+					              <h3 class="panel-title">Browse Photos</h3>
+					            </div>
+					            <div class="panel-body">
+					              	<input type="file" ng-model="files" name="files" class="col-md-6" base-sixty-four-input multiple accept="image/*, .zip" minsize="500" required minnum="2">
+		    								<button class="btn btn-success btn-md col-md-3"   ng-click="uploadFiles()">Add Photos</button>
+		    								
+		    								<label class="col-md-3 control-label">{{filess.length}} Out of 30 files</label>
+					            </div>
+				          </div> -->
+						 	<div class="col-md-12" >
+								<br>
+							</div>
+							<div class="form-group">
+							  <div class="col-xs-6 col-md-3" ng-repeat="file in filess">
+							   
+							      <img ng-src="{{file.imgUri}}"  class="thumbnail" alt="..." width="254" height="186" >
+							    
+							  </div>
+							</div>
+									
+						</div> 
+					
+					<!--  UPLOAD PHOTOS 
+					<h3 class="accordion" ng-class="{active:accordion==2}">
+						<a href ng-click="accordion = 2">Upload Photos</a>
+					</h3>
+					<div class="accordion-content" ng-controller = "FileUploadController" ng-show="accordion==2">
+						
+							<div class="col-md-7" >
+								<fieldset class="fieldset">
+									<legend>Browse Photos</legend>
+									 	<div>
+									 	 <input type="file" ng-model="dummy.images" class="col-md-6" accept="image/*" multiple app-filereader /> 
+									   <input type="file" ng-model="dummy.images" name="dummy.images" app-filereader multiple accept="image/*, .zip" minsize="500" required minnum="2">
+		    								
+										</div>
+								</fieldset>
+							</div>
+							
+							<div class="col-md-12" >
+								<br>
+							</div>
+							<div class="form-group">
+							  <div class="col-xs-6 col-md-3" ng-repeat="image in dummy.images">
+							   
+							      <img ng-src="{{image}}"  class="thumbnail" alt="..." width="254" height="186" >
+							    
+							  </div>
+							</div>
+									
+						</div> -->
+						
+						
+					 	<!-- <div class="row">
+					    	<input type="file" ng-model="files" ng-click="showFile()" name="files" class="col-sm-4" base-sixty-four-input multiple accept="image/*, .zip" minsize="500" required minnum="2">
+					    	<button class="col-sm-1"  ng-click="uploadFiles()">Add Photos</button>
+						</div>
+						<br> -->
+						<!-- <div ng-show="showFileTable">
+							<table class="table table-bordered table-striped">
+							      <tr>
+							        <th>File Name</th>
+							        <th>File Type</th>
+							        <th>File Size (<i><small>KB</small></i>)</th>
+							      </tr>
+							      <tr ng-repeat="file in files">
+							        <td>{{file.filename}}</td>
+							        <td>{{file.filetype}}</td>
+							        <td>{{file.filesize / 1000}}</td>
+							      </tr>
+							      <tr>
+							        <td colspan="4" ng-show="files.length == 0">
+							          <small><i>No file selected.</i></small>
+							        </td>
+							      </tr>
+							    </table>
+						</div> -->
+						<!-- <div class="row" >
+						  <div class="col-xs-6 col-md-3" ng-repeat="file in filess">
+						    <a href="#" class="thumbnail">
+						      <img ng-src="{{file.imgUri}}" alt="...">
+						    </a>
+						  </div>
+						</div>  -->
+						</div>
+					 
+					<!--  PROPERTY SUMMARY -->
+					<h3 class="accordion" ng-class="{active:accordion==3}">
+						<a href ng-click="accordion = 3">Property Summary</a>
+					</h3>
+					<div class="accordion-content" ng-show="accordion==3">
+						<div class="form-group">
+						  <label for="inputPropDescription" class="col-sm-2 form-control-label">Property Description</label>
+						  <div class="col-md-4">
+						  <textarea class="form-control" ng-model="propertydetail.propertyDescription" rows="5" id="inputPropDescription" placeholder="Property Description" ></textarea>
+						  </div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">Summary of the property</div>
+						  	<div class="panel-body">
+								<div class="form-group">
+								  <label for="inputPrice" class="col-md-2 form-control-label">Price</label>
+								  <div class="col-md-4">
+								    <input type="text" class="form-control" ng-model="propertydetail.price" id="inputPrice" placeholder="Price">
+								  </div>
+								</div>
+								<div class="form-group">
+								  	<label class="col-md-2 form-control-label"">Furnished</label>
+								   	<div class="col-md-10">
+										<label class="radio-inline form-control-label""><input type="radio" name="gridRadios" id="gridSemiFurnished" ng-model="propertydetail.furnished"  value="Semi Furnished" checked>Semi Furnished</label>
+										<label class="radio-inline form-control-label""><input type="radio" name="gridRadios" id="gridFullyFurnished" ng-model="propertydetail.furnished" value="Fully Furnished">Fully Furnished</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-2 form-control-label"">Air Conditioner</label>
+									<div class="col-md-10">
+										<label class="radio-inline form-control-label""><input type="radio" name="gridRadiosAc" ng-model="propertydetail.airConditionerAvailable" id="gridYes" value="Yes" checked>Yes</label>
+										<label class="radio-inline form-control-label""><input type="radio" name="gridRadiosAc" ng-model="propertydetail.airConditionerAvailable" id="gridNo" value="No">No</label>
+								     </div>
+								</div>
+								<div class="form-group">
+									<label for="inputSquareFeet" class="col-md-2 form-control-label">Square Feet</label>
+									<div class="col-md-1">
+										<input type="text" class="form-control" ng-model="propertydetail.squareFeet" id="inputSquareFeet" placeholder="Sq.ft">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPropertyType" class="col-md-2 form-control-label">Property Type</label>
+									<div class="col-md-3">
+										<select class="form-control" ng-model="propertydetail.propertyType" id="selPropertyType">
+										    <option value="Apartment">Apartment</option>
+										    <option value="Individual House/Villa">Individual House/Villa</option>
+										    <option value="Row House">Row House</option>
+										    <option value="Duplex">Duplex</option>
+										    <option value="Studio">Studio</option>
+										    <option value="Builder Floor">Builder Floor</option>
+										    <option value="Penthouse">Penthouse</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputAssociationFee" class="col-md-2 form-control-label">Association Fee</label>
+									<div class="col-md-4">
+										<input type="text" class="form-control" ng-model="propertydetail.associationFee" id="inputAssociationFee" placeholder="Association Fee">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputParkingSpace" class="col-md-2 form-control-label">Parking Space</label>
+									<div class="col-md-4">
+										<input type="text" class="form-control" ng-model="propertydetail.parkingSpace" id="inputParkingSpace" placeholder="Parking Space">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPropertyAge" class="col-md-2 form-control-label">Property Age</label>
+									<div class="col-md-4">
+										<input type="text" class="form-control" ng-model="propertydetail.age" id="inputPropertyAge" placeholder="Prop Age">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--  INTERIOR FEATURES -->
+					<h3 class="accordion" ng-class="{active:accordion==4}">
+						<a href ng-click="accordion = 4">Interior Features</a>
+					</h3>
+					<div class="accordion-content" ng-show="accordion==4">
+						<div class="form-group">
+							<div class="col-sm-8">
+								<fieldset class="fieldset">
+									<legend>Bathroom Information</legend>
+									<div class="form-group">
+										<label for="inputAttached" class="col-md-2 form-control-label">Attached number #</label>
+										<div class="col-md-2">
+											<input type="text" ng-model="propertydetail.attachedBathroomNum" class="form-control" id="inputAttached" placeholder="Attached">
+										</div>
+										<label for="inputOutside" class="col-md-2 form-control-label">Outside number #</label>
+										<div class="col-md-2">
+											<input type="text" ng-model="propertydetail.outsideBathroomNum" class="form-control" id="inputOutside" placeholder="Outside">
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+						<div class="form-group">
+						    <label for="inputBedroomCount" class="col-md-2 form-control-label">Bedroom Count</label>
+						    <div class="col-md-4">
+						      <input type="text" ng-model="propertydetail.bedroomCount" class="form-control" id="inputBedroomCount" placeholder="Bedroom Count">
+						    </div>
+						</div>
+				  		<div class="form-group">
+						    <label for="inputFloorType" class="col-md-2 form-control-label">Flooring</label>
+						    <div class="col-md-3">
+						      <select class="form-control" ng-model="propertydetail.floorType" id="selFloorType">
+						        <option value="Tiles">Tiles</option>
+						        <option value="Marble">Marble</option>
+						        <option value="Wood">Wood</option>
+						        <option value="Granite">Granite</option>
+						      </select>
+						    </div>
+				  		</div>
+						<div class="form-group">
+						  <label for="inputOtherIntDetail" class="col-md-2 form-control-label">Other Detail</label>
+						  <div class="col-md-4">
+						  	<textarea class="form-control" ng-model="propertydetail.otherInteriorDetail" rows="2" id="inputOtherIntDetail" placeholder="Other Detail" ></textarea>
+						  </div>
+						</div>
+					</div>
+					
+					<!--  EXTERIOR FEATURES -->	
+					<h3 class="accordion" ng-class="{active:accordion==5}">
+						<a href ng-click="accordion = 5">Exterior Features</a>
+					</h3>
+					<div class="accordion-content" ng-show="accordion==5">
+						<div class="form-group">
+							<label for="inputWaterSewer" class="col-md-2 form-control-label">Water/Sewer</label>
+							<div class="col-md-4">
+								<textarea class="form-control" ng-model="propertydetail.waterSewerDetail" rows="2" id="inputWaterSewer" placeholder="Water/Sewer" ></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputBuilderDetails" class="col-md-2 form-control-label">Builder Details</label>
+							<div class="col-md-4">
+								<textarea class="form-control" ng-model="propertydetail.builderDetail" rows="2" id="inputBuilderDetails" placeholder="Builder Details" ></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputModelDesignDetails" class="col-md-2 form-control-label">Model or Design Details</label>
+							<div class="col-md-4">
+								<textarea class="form-control" ng-model="propertydetail.modelDesignDetail" rows="2" id="inputModelDesignDetails" placeholder="Model or Design Details" ></textarea>
+							</div>
+						</div>
+					</div>
+					
+					<!--  AMENITIES -->	
+					<h3 class="accordion" ng-class="{active:accordion==6}">
+						<a href ng-click="accordion = 6">Amenities</a>
+					</h3>
+					<div class="accordion-content" ng-show="accordion==6">
+						<div class="form-group">
+							<div class="col-md-12">
+								<fieldset class="fieldset">
+									<legend>Amenities</legend>
+									<div class="form-group">
+										<label class="checkbox-inline col-sm-offset-1 form-control-label">
+											<input type="checkbox" ng-model="propertydetail.gymAvailable"  value="">Gym
+										</label>
+										<label class="checkbox-inline form-control-label">
+											<input type="checkbox" ng-model="propertydetail.swimmingPoolAvailable" value="">Swimming pool
+										</label>
+										<label class="checkbox-inline form-control-label">
+											<input type="checkbox" ng-model="propertydetail.kidsPlayAreaAvailable" value="">Kids Play area
+										</label>
+										<label class="checkbox-inline form-control-label">
+											<input type="checkbox" ng-model="propertydetail.communityHallAvailable" value="">Community Hall
+										</label>
+										<label class="checkbox-inline form-control-label">
+											<input type="checkbox" ng-model="propertydetail.indoorGamesAvailable" value="">Indoor Games
+										</label>
+										<label class="checkbox-inline form-control-label">
+											<input type="checkbox" ng-model="propertydetail.outdoorGamesAvailable"  value="">Outdoor Games
+										</label>
+										<label class="checkbox-inline form-control-label">
+											<input type="checkbox" ng-model="propertydetail.powerBackupAvailable" value="">Power Backup
+										</label>
+										<label class="checkbox-inline form-control-label">
+										  <input type="checkbox" ng-model="propertydetail.elevatorAvailable" value="">Elevator
+										</label>
+									</div>
+								</fieldset>
+							</div>
+							<div class="col-md-12">
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="col-md-12">
+								<fieldset class="fieldset">
+									<legend>Other Details</legend>
+									<div class="form-group" ng-show="propertydetail.indoorGamesAvailable">
+										<label for="inputIndoorGameDetails" class="col-md-2 form-control-label">Indoor Game Details</label>
+										<div class="col-md-4">
+											<textarea class="form-control" ng-model="propertydetail.indoorGameDetail" rows="2" id="inputIndoorGameDetails" placeholder="Indoor Game Details" ></textarea>
+										</div>
+									</div>
+									<div class="form-group" ng-show="propertydetail.outdoorGamesAvailable">
+										<label for="inputOurdoorGameDetails" class="col-md-2 form-control-label">Outdoor Game Details</label>
+										<div class="col-md-4">
+											<textarea class="form-control" ng-model="propertydetail.outdoorGameDetail" rows="2" id="inputOutdoorGameDetails" placeholder="Outdoor Game Details" ></textarea>
+										</div>
+									</div>
+									<div class="form-group" >
+										<label for="inputAmenitiesOtherDetails" class="col-md-2 form-control-label">Other Details</label>
+										<div class="col-md-4">
+											<textarea class="form-control" ng-model="propertydetail.otherAmenitiesDetail" rows="2" id="inputAmenitiesOtherDetails" placeholder="Other Details" ></textarea>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>	
+					</div>
+					
+					<!--  LOCATION DETAILS -->	
+					<h3 class="accordion" ng-class="{active:accordion==7}">
+						<a href ng-click="accordion = 7">Location Details</a>
+					</h3>
+					<div class="accordion-content" ng-show="accordion==7">
+						<div class="form-group" >
+							<label for="inputOtherLocDetails" class="col-md-2 form-control-label">Other Location Details</label>
+							<div class="col-md-6">
+								<textarea class="form-control" ng-model="propertydetail.otherLocationDetail" rows="5" id="inputOtherLocDetails" placeholder="nearby schools, shopping complex, commute, movie theaters etc. info" ></textarea>
+							</div>
+							<div class="col-md-12">
+								<br>
+								<br>
+							</div>
+							<div class="col-md-12">
+								<div class="col-md-offset-2 col-md-2">
+									<button type="submit" ng-click="savePropertyDetails()" class="btn btn-primary btn-lg btn-block">Save</button>
+								</div>
+								<div class="col-md-2">
+									<button type="submit" class="btn btn-primary btn-lg btn-block">Cancel</button>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				</form>
+			</div>
+			
+			<div class="tab-content tab-pane" ng-show="tab==2">
+				<div ng-init="accordion=1">
+					<h3 class="accordion" ng-class="{active:accordion==1}">
+						<a href ng-click="accordion = 1">Property Address</a>
+					</h3>
+					<p class="accordion-content" ng-show="accordion==1">Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>
+					    
+					<h3 class="accordion" ng-class="{active:accordion==2}">
+						<a href ng-click="accordion = 2">Upload Photos</a>
+					</h3>
+					<p class="accordion-content" ng-show="accordion==2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>
+					    
+					<h3 class="accordion" ng-class="{active:accordion==3}">
+						<a href ng-click="accordion = 3">Property Summary</a>
+					</h3>
+					<p class="accordion-content" ng-show="accordion==3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+					<h3 class="accordion" ng-class="{active:accordion==4}">
+						<a href ng-click="accordion = 4">Interior Features</a>
+					</h3>
+					<p class="accordion-content" ng-show="accordion==4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+				</div>	
+			</div>
+			
+		</div>
+	</div>
+</div>
